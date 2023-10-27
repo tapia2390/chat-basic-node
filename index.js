@@ -25,4 +25,9 @@ io.on('connection', (socket) => {
         console.log(data);
         io.sockets.emit('chat:messageServer',data);
     });
+
+    socket.on('chat:typing', (data) => {
+        console.log(data);
+        socket.broadcast.emit('chat:typingServer',data);
+    });
 });
