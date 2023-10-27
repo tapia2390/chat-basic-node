@@ -23,5 +23,6 @@ io.on('connection', (socket) => {
 
     socket.on('chat:message', (data) => {
         console.log(data);
+        io.sockets.emit('chat:messageServer',data);
     });
 });

@@ -16,3 +16,29 @@ btnSend.addEventListener('click', function () {
     socket.emit('chat:message',dataChat);
 
 });
+
+
+socket.on('chat:messageServer', function(data) {
+
+    const fechaActual = new Date();
+    const horaActual = fechaActual.getHours();
+    const minutosActuales = fechaActual.getMinutes();
+    const segundosActuales = fechaActual.getSeconds();
+
+output.innerHTML +=`
+
+<li class="mar-btm">
+    <div class="media-left">
+    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="img-circle img-sm" alt="Profile Picture">
+    </div>
+    <div class="media-body pad-hor">
+    <div class="speech">
+    <a href="#" class="media-heading">${data.username}</a>
+    <p>${data.message}</p>
+    <p class="speech-time">
+    <i class="fa fa-clock-o fa-fw"></i> ${horaActual}:${minutosActuales}:${segundosActuales}
+    </p>
+    </div>
+    </div>
+    </li>`
+});
