@@ -20,4 +20,8 @@ const server = app.listen(app.get('port'), () => {
 const io = socketIO(server);
 io.on('connection', (socket) => {
     console.log('new connection', socket.id);
+
+    socket.on('chat:message', (data) => {
+        console.log(data);
     });
+});
